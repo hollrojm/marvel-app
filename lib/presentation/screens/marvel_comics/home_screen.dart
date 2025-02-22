@@ -9,14 +9,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-      child: Column(
-        children: [
-          Text(Environment.marvelApiPublicKey),
-          Text(Environment.marvelApiPrivateKey),
-        ],
-      ),
-    ));
+    return const Scaffold(
+      body: Placeholder(),
+    );
   }
 }
