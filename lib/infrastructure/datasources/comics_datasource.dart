@@ -29,6 +29,7 @@ class ComicsDatasource extends ComicsDatasourse {
     );
 
     final List<ComicEntitie> comics = [];
+    print(comics);
     return comics;
   }
 
