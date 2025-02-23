@@ -14,7 +14,9 @@ class ComicMapper {
         format: comicModel.format.toString(),
         pageCount: comicModel.pageCount,
         thumbnail: Image(
-          path: comicModel.thumbnail.path,
+          path: (comicModel.thumbnail.path != '')
+              ? comicModel.thumbnail.path
+              : 'https://ih1.redbubble.net/image.4905811447.8675/flat,750x,075,f-pad,750x1000,f8f8f8.jpg',
           extension: comicModel.thumbnail.extension.toString(),
         ),
       );

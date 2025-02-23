@@ -7,8 +7,10 @@ import 'package:convert/convert.dart';
 import 'package:marvel_app/config/constants/environment.dart';
 import 'package:marvel_app/domain/datasources/comics_datasourse.dart';
 import 'package:marvel_app/domain/entities/comic_entitie.dart';
+import 'package:marvel_app/infrastructure/mappers/comic_mapper.dart';
+import 'package:marvel_app/infrastructure/models/marvelcomics/comic_response.dart';
 
-class ComicsDatasource extends ComicsDatasourse {
+class ComicsDatasourceImpl extends ComicsDatasourse {
   late final Dio dio;
 
   @override
@@ -28,9 +30,11 @@ class ComicsDatasource extends ComicsDatasourse {
       },
     );
 
-    final List<ComicEntitie> comics = [];
-    print(comics);
-    return comics;
+    final comicResponse =
+        ComicResponse.fromJson(response.data['data']['results']);
+    return comicResponse.data.results
+        .map((comic) => ComicMapper.comicToEntity(comic))
+        .toList();
   }
 
   static _generateMd5Hash(String input) {
