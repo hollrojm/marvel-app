@@ -227,11 +227,6 @@ final dateTypeValues = EnumValues({
   "unlimitedDate": DateType.UNLIMITED_DATE
 });
 
-enum Description { EMPTY, N_A }
-
-final descriptionValues =
-    EnumValues({"": Description.EMPTY, "#N/A": Description.N_A});
-
 enum DiamondCode { EMPTY, JUL190068, SEP090507 }
 
 final diamondCodeValues = EnumValues({

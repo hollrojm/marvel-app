@@ -6,7 +6,7 @@ class ComicModel {
   final String title;
   final int issueNumber;
   final String variantDescription;
-  final Description? description;
+  final String? description;
   final String modified;
   final Isbn isbn;
   final String upc;
@@ -69,7 +69,7 @@ class ComicModel {
         title: json["title"],
         issueNumber: json["issueNumber"],
         variantDescription: json["variantDescription"],
-        description: descriptionValues.map[json["description"]]!,
+        description: json["description"]!,
         modified: json["modified"],
         isbn: isbnValues.map[json["isbn"]]!,
         upc: json["upc"],
@@ -106,7 +106,7 @@ class ComicModel {
         "title": title,
         "issueNumber": issueNumber,
         "variantDescription": variantDescription,
-        "description": descriptionValues.reverse[description],
+        "description": description,
         "modified": modified,
         "isbn": isbnValues.reverse[isbn],
         "upc": upc,
