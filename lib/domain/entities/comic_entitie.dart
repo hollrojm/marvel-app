@@ -6,9 +6,8 @@ class ComicEntitie {
   final String variantDescription;
   final String description;
   final DateTime modified;
-
   final int pageCount;
-  final Image thumbnail;
+  final String thumbnail;
 
   ComicEntitie({
     required this.id,
@@ -20,15 +19,5 @@ class ComicEntitie {
     required this.modified,
     required this.pageCount,
     required this.thumbnail,
-  });
-}
-
-class Image {
-  final String path;
-  final String extension;
-
-  Image({
-    required this.path,
-    required this.extension,
   });
 }

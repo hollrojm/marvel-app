@@ -27,11 +27,26 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   @override
   void initState() {
     super.initState();
-    ref.read(nowGetComicsProvider.notifier).getComics();
+    ref.read(getComicsProvider.notifier).loadComics();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    final getComicsState = ref.watch(getComicsProvider);
+
+    if (getComicsState.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    return ListView.builder(
+        itemCount: getComicsState.length,
+        itemBuilder: (context, index) {
+          final comic = getComicsState[index];
+          return ListTile(
+            leading: Image.network(comic.thumbnail),
+            title: Text(comic.title),
+            subtitle: Text(comic.description),
+          );
+        });
   }
 }

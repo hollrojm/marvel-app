@@ -6,10 +6,6 @@ import 'package:convert/convert.dart';
 
 import 'package:marvel_app/config/constants/environment.dart';
 import 'package:marvel_app/domain/datasources/comics_datasourse.dart';
-import 'package:marvel_app/domain/entities/comic_entitie.dart';
-import 'package:marvel_app/infrastructure/mappers/comic_mapper.dart';
-import 'package:marvel_app/infrastructure/models/marvelcomics/comic_model.dart';
-import 'package:marvel_app/infrastructure/models/marvelcomics/comic_response.dart';
 
 class ComicsDatasourceImpl extends ComicsDatasourse {
   final Dio dio;

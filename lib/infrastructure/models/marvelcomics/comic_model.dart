@@ -18,7 +18,7 @@ class ComicModel {
   final List<Series>? collectedIssues;
   final List<Date>? dates;
   final List<Price>? prices;
-  final Thumbnail? thumbnail;
+  final String? thumbnail;
   final List<Thumbnail>? images;
   final Creators? creators;
   final Characters? characters;
@@ -57,7 +57,7 @@ class ComicModel {
         title: json["title"],
         issueNumber: json["issueNumber"]!,
         variantDescription: json["variantDescription"]!,
-        description: json["description"] ?? '',
+        description: json["description"] ?? 'No description',
         modified: json["modified"] ?? '',
         pageCount: json["pageCount"] ?? 0,
         textObjects: List<TextObject>.from(
@@ -73,7 +73,10 @@ class ComicModel {
             json["collectedIssues"].map((x) => Series.fromJson(x))),
         dates: List<Date>.from(json["dates"].map((x) => Date.fromJson(x))),
         prices: List<Price>.from(json["prices"].map((x) => Price.fromJson(x))),
-        thumbnail: Thumbnail.fromJson(json["thumbnail"]),
+        thumbnail: ('${json["thumbnail"]["path"]}.${json["thumbnail"]["extension"]}' ==
+                '')
+            ? 'https://www.shutterstock.com/image-vector/no-image-available-vector-illustration-260nw-744886198.jpg'
+            : '${json["thumbnail"]["path"]}.${json["thumbnail"]["extension"]}',
         images: List<Thumbnail>.from(
             json["images"].map((x) => Thumbnail.fromJson(x))),
         creators: Creators.fromJson(json["creators"]),
@@ -101,7 +104,7 @@ class ComicModel {
             List<dynamic>.from(collectedIssues!.map((x) => x.toJson())),
         "dates": List<dynamic>.from(dates!.map((x) => x.toJson())),
         "prices": List<dynamic>.from(prices!.map((x) => x.toJson())),
-        "thumbnail": thumbnail!.toJson(),
+        "thumbnail": thumbnail,
         "images": List<dynamic>.from(images!.map((x) => x.toJson())),
         "creators": creators!.toJson(),
         "characters": characters!.toJson(),

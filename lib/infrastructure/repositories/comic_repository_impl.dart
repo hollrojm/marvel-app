@@ -13,6 +13,7 @@ class ComicRepositoryImpl implements ComicsRepository {
   Future<List<ComicEntitie>> getComics() async {
     final comicsJson = await comicsDatasourse.getComics();
     final comics = comicsJson
+        //comicsJson` a una instancia de `ComicModel`, y luego convierte esa instancia de `ComicModel` a una instancia de `ComicEntitie`,
         .map((json) => ComicMapper.comicToEntity(ComicModel.fromJson(json)))
         .toList();
 
