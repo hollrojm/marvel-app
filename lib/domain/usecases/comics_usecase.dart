@@ -6,7 +6,7 @@ class ComicsUseCase {
 
   ComicsUseCase(this._comicsRepository);
 
-  Future<List<ComicEntitie>> execute() async {
+  Future<List<ComicEntitie>> getComics() async {
     return await _comicsRepository.getComics();
   }
 }

@@ -8,13 +8,16 @@ import 'package:marvel_app/config/constants/environment.dart';
 import 'package:marvel_app/domain/datasources/comics_datasourse.dart';
 import 'package:marvel_app/domain/entities/comic_entitie.dart';
 import 'package:marvel_app/infrastructure/mappers/comic_mapper.dart';
+import 'package:marvel_app/infrastructure/models/marvelcomics/comic_model.dart';
 import 'package:marvel_app/infrastructure/models/marvelcomics/comic_response.dart';
 
 class ComicsDatasourceImpl extends ComicsDatasourse {
-  late final Dio dio;
+  final Dio dio;
+
+  ComicsDatasourceImpl({required this.dio});
 
   @override
-  Future<List<ComicEntitie>> getComics() async {
+  Future<List<Map<String, dynamic>>> getComics() async {
     final privateKey = Environment.marvelApiPrivateKey;
     final publicKey = Environment.marvelApiPublicKey;
     final timestamp = DateTime.now().microsecondsSinceEpoch.toString();
@@ -27,14 +30,12 @@ class ComicsDatasourceImpl extends ComicsDatasourse {
         'ts': timestamp,
         'apikey': publicKey,
         'hash': hash,
+        'limit': 50,
       },
     );
-
-    final comicResponse =
-        ComicResponse.fromJson(response.data['data']['results']);
-    return comicResponse.data.results
-        .map((comic) => ComicMapper.comicToEntity(comic))
-        .toList();
+    final results = List<Map<String, dynamic>>.from(
+        response.data['data']['results'] as List<dynamic>);
+    return results.map((comicJson) => comicJson).toList();
   }
 
   static _generateMd5Hash(String input) {

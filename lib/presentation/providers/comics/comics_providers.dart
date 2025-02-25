@@ -5,7 +5,9 @@ import 'package:marvel_app/presentation/providers/comics/comics_repository_provi
 final nowGetComicsProvider =
     StateNotifierProvider<ComicsNotifier, List<ComicEntitie>>((ref) {
   final getComics = ref.watch(comicRepositoryProvider).getComics;
-  return ComicsNotifier(getComics: getComics);
+  return ComicsNotifier(
+    getComics: getComics,
+  );
 });
 
 typedef ComicCallback = Future<List<ComicEntitie>> Function();

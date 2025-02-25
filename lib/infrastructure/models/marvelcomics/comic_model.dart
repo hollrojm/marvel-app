@@ -1,35 +1,29 @@
 import 'package:marvel_app/infrastructure/models/marvelcomics/comic_response.dart';
 
 class ComicModel {
-  final int id;
-  final int digitalId;
-  final String title;
-  final int issueNumber;
-  final String variantDescription;
+  final int? id;
+  final int? digitalId;
+  final String? title;
+  final int? issueNumber;
+  final String? variantDescription;
   final String? description;
   final String modified;
-  final Isbn isbn;
-  final String upc;
-  final DiamondCode diamondCode;
-  final Ean ean;
-  final String issn;
-  final Format format;
-  final int pageCount;
-  final List<TextObject> textObjects;
-  final String resourceUri;
-  final List<Url> urls;
-  final Series series;
-  final List<Series> variants;
-  final List<Series> collections;
-  final List<Series> collectedIssues;
-  final List<Date> dates;
-  final List<Price> prices;
-  final Thumbnail thumbnail;
-  final List<Thumbnail> images;
-  final Creators creators;
-  final Characters characters;
-  final Stories stories;
-  final Characters events;
+  final int? pageCount;
+  final List<TextObject>? textObjects;
+  final String? resourceUri;
+  final List<Url>? urls;
+  final Series? series;
+  final List<Series>? variants;
+  final List<Series>? collections;
+  final List<Series>? collectedIssues;
+  final List<Date>? dates;
+  final List<Price>? prices;
+  final Thumbnail? thumbnail;
+  final List<Thumbnail>? images;
+  final Creators? creators;
+  final Characters? characters;
+  final Stories? stories;
+  final Characters? events;
 
   ComicModel({
     required this.id,
@@ -39,12 +33,6 @@ class ComicModel {
     required this.variantDescription,
     required this.description,
     required this.modified,
-    required this.isbn,
-    required this.upc,
-    required this.diamondCode,
-    required this.ean,
-    required this.issn,
-    required this.format,
     required this.pageCount,
     required this.textObjects,
     required this.resourceUri,
@@ -64,20 +52,14 @@ class ComicModel {
   });
 
   factory ComicModel.fromJson(Map<String, dynamic> json) => ComicModel(
-        id: json["id"],
-        digitalId: json["digitalId"],
+        id: json["id"]!,
+        digitalId: json["digitalId"]!,
         title: json["title"],
-        issueNumber: json["issueNumber"],
-        variantDescription: json["variantDescription"],
-        description: json["description"]!,
-        modified: json["modified"],
-        isbn: isbnValues.map[json["isbn"]]!,
-        upc: json["upc"],
-        diamondCode: diamondCodeValues.map[json["diamondCode"]]!,
-        ean: eanValues.map[json["ean"]]!,
-        issn: json["issn"],
-        format: formatValues.map[json["format"]]!,
-        pageCount: json["pageCount"],
+        issueNumber: json["issueNumber"]!,
+        variantDescription: json["variantDescription"]!,
+        description: json["description"] ?? '',
+        modified: json["modified"] ?? '',
+        pageCount: json["pageCount"] ?? 0,
         textObjects: List<TextObject>.from(
             json["textObjects"].map((x) => TextObject.fromJson(x))),
         resourceUri: json["resourceURI"],
@@ -108,28 +90,22 @@ class ComicModel {
         "variantDescription": variantDescription,
         "description": description,
         "modified": modified,
-        "isbn": isbnValues.reverse[isbn],
-        "upc": upc,
-        "diamondCode": diamondCodeValues.reverse[diamondCode],
-        "ean": eanValues.reverse[ean],
-        "issn": issn,
-        "format": formatValues.reverse[format],
         "pageCount": pageCount,
-        "textObjects": List<dynamic>.from(textObjects.map((x) => x.toJson())),
+        "textObjects": List<dynamic>.from(textObjects!.map((x) => x.toJson())),
         "resourceURI": resourceUri,
-        "urls": List<dynamic>.from(urls.map((x) => x.toJson())),
-        "series": series.toJson(),
-        "variants": List<dynamic>.from(variants.map((x) => x.toJson())),
-        "collections": List<dynamic>.from(collections.map((x) => x.toJson())),
+        "urls": List<dynamic>.from(urls!.map((x) => x.toJson())),
+        "series": series!.toJson(),
+        "variants": List<dynamic>.from(variants!.map((x) => x.toJson())),
+        "collections": List<dynamic>.from(collections!.map((x) => x.toJson())),
         "collectedIssues":
-            List<dynamic>.from(collectedIssues.map((x) => x.toJson())),
-        "dates": List<dynamic>.from(dates.map((x) => x.toJson())),
-        "prices": List<dynamic>.from(prices.map((x) => x.toJson())),
-        "thumbnail": thumbnail.toJson(),
-        "images": List<dynamic>.from(images.map((x) => x.toJson())),
-        "creators": creators.toJson(),
-        "characters": characters.toJson(),
-        "stories": stories.toJson(),
-        "events": events.toJson(),
+            List<dynamic>.from(collectedIssues!.map((x) => x.toJson())),
+        "dates": List<dynamic>.from(dates!.map((x) => x.toJson())),
+        "prices": List<dynamic>.from(prices!.map((x) => x.toJson())),
+        "thumbnail": thumbnail!.toJson(),
+        "images": List<dynamic>.from(images!.map((x) => x.toJson())),
+        "creators": creators!.toJson(),
+        "characters": characters!.toJson(),
+        "stories": stories!.toJson(),
+        "events": events!.toJson(),
       };
 }

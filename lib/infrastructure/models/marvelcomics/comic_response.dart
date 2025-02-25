@@ -1,13 +1,13 @@
 import 'package:marvel_app/infrastructure/models/marvelcomics/comic_model.dart';
 
 class ComicResponse {
-  final int code;
-  final String status;
-  final String copyright;
-  final String attributionText;
-  final String attributionHtml;
-  final String etag;
-  final Data data;
+  final int? code;
+  final String? status;
+  final String? copyright;
+  final String? attributionText;
+  final String? attributionHtml;
+  final String? etag;
+  final Data? data;
 
   ComicResponse({
     required this.code,
@@ -26,7 +26,7 @@ class ComicResponse {
         attributionText: json["attributionText"],
         attributionHtml: json["attributionHTML"],
         etag: json["etag"],
-        data: Data.fromJson(json["data"]),
+        data: json["data"] != null ? Data.fromJson(json["data"]) : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -36,14 +36,14 @@ class ComicResponse {
         "attributionText": attributionText,
         "attributionHTML": attributionHtml,
         "etag": etag,
-        "data": data.toJson(),
+        "data": data!.toJson(),
       };
 }
 
 class Data {
   final int offset;
   final int limit;
-  final int total;
+  final int? total;
   final int count;
   final List<ComicModel> results;
 
@@ -58,8 +58,8 @@ class Data {
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         offset: json["offset"],
         limit: json["limit"],
-        total: json["total"],
-        count: json["count"],
+        total: json["total"] ?? 0,
+        count: json["count"] ?? 0,
         results: List<ComicModel>.from(
             json["results"].map((x) => ComicModel.fromJson(x))),
       );
@@ -153,50 +153,22 @@ class Creators {
 class CreatorsItem {
   final String resourceUri;
   final String name;
-  final Role role;
 
   CreatorsItem({
     required this.resourceUri,
     required this.name,
-    required this.role,
   });
 
   factory CreatorsItem.fromJson(Map<String, dynamic> json) => CreatorsItem(
         resourceUri: json["resourceURI"],
         name: json["name"],
-        role: roleValues.map[json["role"]]!,
       );
 
   Map<String, dynamic> toJson() => {
         "resourceURI": resourceUri,
         "name": name,
-        "role": roleValues.reverse[role],
       };
 }
-
-enum Role {
-  COLORIST,
-  EDITOR,
-  INKER,
-  LETTERER,
-  OTHER,
-  PENCILER,
-  PENCILLER,
-  PENCILLER_COVER,
-  WRITER
-}
-
-final roleValues = EnumValues({
-  "colorist": Role.COLORIST,
-  "editor": Role.EDITOR,
-  "inker": Role.INKER,
-  "letterer": Role.LETTERER,
-  "other": Role.OTHER,
-  "penciler": Role.PENCILER,
-  "penciller": Role.PENCILLER,
-  "penciller (cover)": Role.PENCILLER_COVER,
-  "writer": Role.WRITER
-});
 
 class Date {
   final DateType type;
@@ -273,14 +245,6 @@ enum Extension { JPG }
 
 final extensionValues = EnumValues({"jpg": Extension.JPG});
 
-enum Isbn { EMPTY, THE_0785111298, THE_9780785136217 }
-
-final isbnValues = EnumValues({
-  "": Isbn.EMPTY,
-  "0-7851-1129-8": Isbn.THE_0785111298,
-  "978-0-7851-3621-7": Isbn.THE_9780785136217
-});
-
 class Price {
   final PriceType type;
   final double price;
@@ -351,7 +315,7 @@ class StoriesItem {
   factory StoriesItem.fromJson(Map<String, dynamic> json) => StoriesItem(
         resourceUri: json["resourceURI"],
         name: json["name"],
-        type: itemTypeValues.map[json["type"]]!,
+        type: itemTypeValues.map[json["type"]] ?? ItemType.EMPTY,
       );
 
   Map<String, dynamic> toJson() => {
@@ -382,7 +346,8 @@ class TextObject {
   });
 
   factory TextObject.fromJson(Map<String, dynamic> json) => TextObject(
-        type: textObjectTypeValues.map[json["type"]]!,
+        type: textObjectTypeValues.map[json["type"]] ??
+            TextObjectType.ISSUE_SOLICIT_TEXT,
         language: languageValues.map[json["language"]]!,
         text: json["text"],
       );

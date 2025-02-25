@@ -6,8 +6,7 @@ class ComicEntitie {
   final String variantDescription;
   final String description;
   final DateTime modified;
-  final String isbn;
-  final String format;
+
   final int pageCount;
   final Image thumbnail;
 
@@ -19,8 +18,6 @@ class ComicEntitie {
     required this.variantDescription,
     required this.description,
     required this.modified,
-    required this.isbn,
-    required this.format,
     required this.pageCount,
     required this.thumbnail,
   });
