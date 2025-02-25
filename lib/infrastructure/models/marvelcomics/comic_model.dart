@@ -75,9 +75,9 @@ class ComicModel {
         prices: List<Price>.from(json["prices"].map((x) => Price.fromJson(x))),
         thumbnail:
             ('${json["thumbnail"]["path"]}.${json["thumbnail"]["extension"]}' !=
-                    '')
+                    'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg')
                 ? '${json["thumbnail"]["path"]}.${json["thumbnail"]["extension"]}'
-                : 'https://ecompile.io/assets/img/blogs/404/marvel.jpg',
+                : 'https://i.redd.it/7z6qt753qe031.jpg',
         images: List<Thumbnail>.from(
             json["images"].map((x) => Thumbnail.fromJson(x))),
         creators: Creators.fromJson(json["creators"]),

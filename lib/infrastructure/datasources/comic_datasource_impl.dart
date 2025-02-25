@@ -26,7 +26,7 @@ class ComicsDatasourceImpl extends ComicsDatasourse {
         'ts': timestamp,
         'apikey': publicKey,
         'hash': hash,
-        'limit': 50,
+        'limit': 100,
       },
     );
     final results = List<Map<String, dynamic>>.from(
