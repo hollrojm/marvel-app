@@ -73,10 +73,11 @@ class ComicModel {
             json["collectedIssues"].map((x) => Series.fromJson(x))),
         dates: List<Date>.from(json["dates"].map((x) => Date.fromJson(x))),
         prices: List<Price>.from(json["prices"].map((x) => Price.fromJson(x))),
-        thumbnail: ('${json["thumbnail"]["path"]}.${json["thumbnail"]["extension"]}' ==
-                '')
-            ? 'https://www.shutterstock.com/image-vector/no-image-available-vector-illustration-260nw-744886198.jpg'
-            : '${json["thumbnail"]["path"]}.${json["thumbnail"]["extension"]}',
+        thumbnail:
+            ('${json["thumbnail"]["path"]}.${json["thumbnail"]["extension"]}' !=
+                    '')
+                ? '${json["thumbnail"]["path"]}.${json["thumbnail"]["extension"]}'
+                : 'https://ecompile.io/assets/img/blogs/404/marvel.jpg',
         images: List<Thumbnail>.from(
             json["images"].map((x) => Thumbnail.fromJson(x))),
         creators: Creators.fromJson(json["creators"]),
