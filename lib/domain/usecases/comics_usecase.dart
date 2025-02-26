@@ -1,4 +1,4 @@
-import 'package:marvel_app/domain/entities/comic_entitie.dart';
+import 'package:marvel_app/domain/entities/comic_entity.dart';
 import 'package:marvel_app/domain/repositories/comics_repository.dart';
 
 class ComicsUseCase {
@@ -6,7 +6,7 @@ class ComicsUseCase {
 
   ComicsUseCase(this._comicsRepository);
 
-  Future<List<ComicEntitie>> getComics() async {
+  Future<List<ComicEntity>> getComics() async {
     return await _comicsRepository.getComics();
   }
 }

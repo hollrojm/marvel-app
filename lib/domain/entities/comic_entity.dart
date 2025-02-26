@@ -1,4 +1,4 @@
-class ComicEntitie {
+class ComicEntity {
   final int id;
   final int digitalId;
   final String title;
@@ -9,7 +9,7 @@ class ComicEntitie {
   final int pageCount;
   final String thumbnail;
 
-  ComicEntitie({
+  ComicEntity({
     required this.id,
     required this.digitalId,
     required this.title,

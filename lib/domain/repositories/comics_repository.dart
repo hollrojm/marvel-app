@@ -1,5 +1,5 @@
-import 'package:marvel_app/domain/entities/comic_entitie.dart';
+import 'package:marvel_app/domain/entities/comic_entity.dart';
 
 abstract class ComicsRepository {
-  Future<List<ComicEntitie>> getComics();
+  Future<List<ComicEntity>> getComics();
 }

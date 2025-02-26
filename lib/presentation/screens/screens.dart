@@ -1,1 +1,1 @@
-export 'marvel_comics/home_screen.dart';
+export 'marvel_comics/comics_screen.dart';

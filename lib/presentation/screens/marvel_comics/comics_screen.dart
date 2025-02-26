@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:marvel_app/domain/entities/comic_entitie.dart';
+import 'package:marvel_app/domain/entities/comic_entity.dart';
 
 import 'package:marvel_app/presentation/providers/comics/comics_providers.dart';
 
-class HomeScreen extends StatelessWidget {
-  static const name = 'home-screen';
+class ComicsScreen extends StatelessWidget {
+  static const name = 'comics-screen';
 
-  const HomeScreen({super.key});
+  const ComicsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +93,7 @@ class _BuildAllComicsGrid extends StatelessWidget {
     required this.getComicsState,
   });
 
-  final List<ComicEntitie> getComicsState;
+  final List<ComicEntity> getComicsState;
 
   @override
   Widget build(BuildContext context) {
