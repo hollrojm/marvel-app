@@ -18,9 +18,9 @@ class MarvelMovieDatasourceImpl extends MarvelMoviesDatasourse {
   );
 
   @override
-  Future<List<MovieEntity>> getMarvelMovies({int page = 1}) async {
+  Future<List<MarvelMovieEntity>> getMarvelMovies({int page = 1}) async {
     final response = await dio.get('/discover/movie');
-    final List<MovieEntity> movies = [];
+    final List<MarvelMovieEntity> movies = [];
     return movies;
   }
 }

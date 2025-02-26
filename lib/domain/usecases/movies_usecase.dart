@@ -7,7 +7,7 @@ class MarvelMoviesUsecase {
   MarvelMoviesUsecase({required MarvelMoviesRepository marvelMoviesRepository})
       : _marvelMoviesRepository = marvelMoviesRepository;
 
-  Future<List<MovieEntity>> getMovies() async {
+  Future<List<MarvelMovieEntity>> getMovies() async {
     return await _marvelMoviesRepository.getMovies();
   }
 }

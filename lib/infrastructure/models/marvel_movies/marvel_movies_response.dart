@@ -1,4 +1,4 @@
-import 'package:marvel_app/infrastructure/models/marvelmovies/marvel_movies_model.dart';
+import 'package:marvel_app/infrastructure/models/marvel_movies/marvel_movies_model.dart';
 
 class MarvelMoviesResponse {
   final int page;
