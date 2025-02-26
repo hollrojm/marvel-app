@@ -5,4 +5,6 @@ class Environment {
       dotenv.env['MARVEL_PUBLIC_KEY'] ?? 'No hay public api Key';
   static String marvelApiPrivateKey =
       dotenv.env['MARVEL_PRIVATE_KEY'] ?? 'No hay private api Key';
+  static String marvelMoviesApiKey =
+      dotenv.env['MARVEL_MOVIES_API_KEY'] ?? 'No hay movies api Key';
 }

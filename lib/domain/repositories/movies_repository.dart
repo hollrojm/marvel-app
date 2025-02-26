@@ -1,5 +1,5 @@
 import 'package:marvel_app/domain/entities/movie_entity.dart';
 
-abstract class MoviesRepository {
+abstract class MarvelMoviesRepository {
   Future<List<MovieEntity>> getMovies();
 }

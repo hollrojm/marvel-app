@@ -1,13 +1,13 @@
 import 'package:marvel_app/domain/entities/movie_entity.dart';
 import 'package:marvel_app/domain/repositories/movies_repository.dart';
 
-class MoviesUsecase {
-  final MoviesRepository _moviesRepository;
+class MarvelMoviesUsecase {
+  final MarvelMoviesRepository _marvelMoviesRepository;
 
-  MoviesUsecase({required MoviesRepository moviesRepository})
-      : _moviesRepository = moviesRepository;
+  MarvelMoviesUsecase({required MarvelMoviesRepository marvelMoviesRepository})
+      : _marvelMoviesRepository = marvelMoviesRepository;
 
   Future<List<MovieEntity>> getMovies() async {
-    return await _moviesRepository.getMovies();
+    return await _marvelMoviesRepository.getMovies();
   }
 }
