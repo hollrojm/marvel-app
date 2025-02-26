@@ -1,17 +1,10 @@
 import 'package:marvel_app/infrastructure/models/marvelmovies/marvel_movies_model.dart';
-import 'dart:convert';
-
-MarvelMoviesResponse marvelMoviesResponseFromJson(String str) =>
-    MarvelMoviesResponse.fromJson(json.decode(str));
-
-String marvelMoviesResponseToJson(MarvelMoviesResponse data) =>
-    json.encode(data.toJson());
 
 class MarvelMoviesResponse {
-  int page;
-  List<MarvelMoviesModel> results;
-  int totalPages;
-  int totalResults;
+  final int page;
+  final List<MarvelMoviesModel> results;
+  final int totalPages;
+  final int totalResults;
 
   MarvelMoviesResponse({
     required this.page,

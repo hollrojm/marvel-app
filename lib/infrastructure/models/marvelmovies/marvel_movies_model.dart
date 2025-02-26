@@ -1,23 +1,25 @@
 class MarvelMoviesModel {
-  bool adult;
-  String backdropPath;
-  List<int> genreIds;
-  int id;
-  String originalTitle;
-  String overview;
-  double popularity;
-  String posterPath;
-  DateTime releaseDate;
-  String title;
-  bool video;
-  double voteAverage;
-  int voteCount;
+  final bool adult;
+  final String backdropPath;
+  final List<int> genreIds;
+  final int id;
+  final String originalLanguage;
+  final String originalTitle;
+  final String overview;
+  final double popularity;
+  final String posterPath;
+  final DateTime releaseDate;
+  final String title;
+  final bool video;
+  final double voteAverage;
+  final int voteCount;
 
   MarvelMoviesModel({
     required this.adult,
     required this.backdropPath,
     required this.genreIds,
     required this.id,
+    required this.originalLanguage,
     required this.originalTitle,
     required this.overview,
     required this.popularity,
@@ -31,14 +33,15 @@ class MarvelMoviesModel {
 
   factory MarvelMoviesModel.fromJson(Map<String, dynamic> json) =>
       MarvelMoviesModel(
-        adult: json["adult"],
-        backdropPath: json["backdrop_path"],
+        adult: json["adult"] ?? false,
+        backdropPath: json["backdrop_path"] ?? '',
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
         id: json["id"],
+        originalLanguage: json["original_language"]!,
         originalTitle: json["original_title"],
-        overview: json["overview"],
+        overview: json["overview"] ?? '',
         popularity: json["popularity"]?.toDouble(),
-        posterPath: json["poster_path"],
+        posterPath: json["poster_path"] ?? '',
         releaseDate: DateTime.parse(json["release_date"]),
         title: json["title"],
         video: json["video"],
@@ -51,6 +54,7 @@ class MarvelMoviesModel {
         "backdrop_path": backdropPath,
         "genre_ids": List<dynamic>.from(genreIds.map((x) => x)),
         "id": id,
+        "original_language": originalLanguage,
         "original_title": originalTitle,
         "overview": overview,
         "popularity": popularity,
