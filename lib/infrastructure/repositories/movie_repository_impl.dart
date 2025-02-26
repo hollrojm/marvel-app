@@ -8,7 +8,7 @@ class MarvelMovieRepositoryImpl implements MarvelMoviesRepository {
   MarvelMovieRepositoryImpl(this.marvelMoviesDatasourse);
 
   @override
-  Future<List<MarvelMovieEntity>> getMovies() {
-    throw UnimplementedError();
+  Future<List<MarvelMovieEntity>> getMovies({int page = 1}) {
+    return marvelMoviesDatasourse.getMarvelMovies(page: page);
   }
 }
