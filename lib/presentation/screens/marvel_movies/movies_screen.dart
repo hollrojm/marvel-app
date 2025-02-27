@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:marvel_app/domain/entities/comic_entity.dart';
+import 'package:marvel_app/domain/entities/movie_entity.dart';
 
 import 'package:marvel_app/presentation/providers/providers.dart';
 
-class ComicsScreen extends StatelessWidget {
-  static const name = 'comics-screen';
+class MoviesScreen extends StatelessWidget {
+  static const name = 'movies-screen';
 
-  const ComicsScreen({super.key});
+  const MoviesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ComicsScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: const Text(
-          'COMICS',
+          'MOVIES',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -56,14 +56,14 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   @override
   void initState() {
     super.initState();
-    ref.read(getComicsProvider.notifier).loadComics();
+    ref.read(getmoviesProviders.notifier).loadNextPage();
   }
 
   @override
   Widget build(BuildContext context) {
-    final getComicsState = ref.watch(getComicsProvider);
+    final getMoviesState = ref.watch(getmoviesProviders);
 
-    if (getComicsState.isEmpty) {
+    if (getMoviesState.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     }
 
@@ -81,7 +81,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                   fontSize: 18),
             ),
           ),
-          _BuildAllComicsGrid(getComicsState: getComicsState)
+          _BuildAllComicsGrid(getMoviesState: getMoviesState)
         ],
       ),
     );
@@ -90,10 +90,10 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
 class _BuildAllComicsGrid extends StatelessWidget {
   const _BuildAllComicsGrid({
-    required this.getComicsState,
+    required this.getMoviesState,
   });
 
-  final List<ComicEntity> getComicsState;
+  final List<MarvelMovieEntity> getMoviesState;
 
   @override
   Widget build(BuildContext context) {
@@ -107,9 +107,9 @@ class _BuildAllComicsGrid extends StatelessWidget {
         crossAxisSpacing: 15,
         mainAxisSpacing: 35,
       ),
-      itemCount: getComicsState.length,
+      itemCount: getMoviesState.length,
       itemBuilder: (context, index) {
-        final comic = getComicsState[index];
+        final comic = getMoviesState[index];
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -117,7 +117,7 @@ class _BuildAllComicsGrid extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  comic.thumbnail,
+                  comic.posterPath,
                   width: double.infinity,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) => const Icon(

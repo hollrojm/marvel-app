@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marvel_app/domain/entities/movie_entity.dart';
 import 'package:marvel_app/presentation/providers/movies/movies_repository_provider.dart';
 
-final geymoviesProviders =
+final getmoviesProviders =
     StateNotifierProvider<MoviesNotifier, List<MarvelMovieEntity>>((ref) {
   final fetchMoreMovies = ref.watch(movieRepositoryProvider).getMovies;
   return MoviesNotifier(fetchMoreMovies: fetchMoreMovies);
@@ -19,7 +19,7 @@ class MoviesNotifier extends StateNotifier<List<MarvelMovieEntity>> {
   }) : super([]);
 
   Future<void> loadNextPage() async {
-    currentPage++;
+    //currentPage++;
     final List<MarvelMovieEntity> movies =
         await fetchMoreMovies(page: currentPage);
     state = [...state, ...movies];
