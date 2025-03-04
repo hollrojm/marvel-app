@@ -29,6 +29,7 @@ class CustomAppbar extends StatelessWidget {
                 IconButton(
                   onPressed: () {},
                   icon: icon,
+                  color: Colors.white,
                 ),
               ],
             ),

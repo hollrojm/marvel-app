@@ -47,6 +47,9 @@ class _HomeViewState extends ConsumerState<_HomeView> {
           icon: Icon(Icons.search),
           text: 'Marvel Movies',
         ),
+        const SizedBox(
+          height: 5,
+        ),
         _BuildAllComicsGrid(getMoviesState: getMoviesState)
       ],
     );
@@ -62,41 +65,6 @@ class _BuildAllComicsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.builder(
-        padding: const EdgeInsets.all(16),
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 0.7,
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 35,
-        ),
-        itemCount: getMoviesState.length,
-        itemBuilder: (context, index) {
-          final comic = getMoviesState[index];
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    comic.posterPath,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => const Icon(
-                      Icons.error,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          );
-        },
-      ),
-    );
+    return MoviesSlideshow(movies: getMoviesState);
   }
 }
