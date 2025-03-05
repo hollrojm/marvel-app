@@ -34,9 +34,10 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final getMoviesState = ref.watch(getmoviesProviders);
+    //final getMoviesState = ref.watch(getmoviesProviders);
+    final getMoviesSlideShow = ref.watch(moviesSlideshowProvider);
 
-    if (getMoviesState.isEmpty) {
+    if (getMoviesSlideShow.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     }
 
@@ -50,7 +51,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
         const SizedBox(
           height: 5,
         ),
-        _BuildAllComicsGrid(getMoviesState: getMoviesState)
+        _BuildAllComicsGrid(getMoviesState: getMoviesSlideShow)
       ],
     );
   }
