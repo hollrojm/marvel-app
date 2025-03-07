@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:marvel_app/domain/entities/movie_entity.dart';
 
@@ -12,8 +13,22 @@ class MoviesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: _HomeView(), bottomNavigationBar: CustomBottomNavigation());
+    return Scaffold(
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/portal-avengers.png'),
+              ),
+            ),
+          ),
+          const _HomeView(),
+        ],
+      ),
+      bottomNavigationBar: const CustomBottomNavigation(),
+    );
   }
 }
 

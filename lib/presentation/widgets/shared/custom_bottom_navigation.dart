@@ -6,14 +6,15 @@ class CustomBottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      selectedItemColor: Theme.of(context).primaryColor,
+      unselectedItemColor: Colors.amber,
       elevation: 0,
       items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home_sharp), label: 'Home'),
         BottomNavigationBarItem(
-            icon: Icon(Icons.movie_creation_outlined), label: 'Movies'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.book_online_outlined), label: 'Comics'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.person_2_outlined), label: 'Characters'),
+            icon: Icon(Icons.grid_view_rounded), label: 'Category'),
+        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
       ],
     );
   }

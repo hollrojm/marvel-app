@@ -23,7 +23,9 @@ class CustomAppbar extends StatelessWidget {
                 const SizedBox(width: 5),
                 Text(
                   text,
-                  style: titleStyle!.copyWith(color: Colors.white),
+                  style: titleStyle!.copyWith(
+                    color: Colors.white,
+                  ),
                 ),
                 const Spacer(),
                 IconButton(
